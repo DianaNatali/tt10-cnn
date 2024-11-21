@@ -1,0 +1,4 @@
+numpy<2
+matplotlib>=3.2
+cocotb
+opencv-python
