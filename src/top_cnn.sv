@@ -5,7 +5,7 @@
 `endif
 
 
-module tt_um_cnn (
+module top_cnn (
     input logic clk_i,
     input logic nreset_i,
     input logic start_cnn_i,  
