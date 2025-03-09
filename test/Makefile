@@ -13,9 +13,10 @@ PWD=$(shell pwd)
 VERILOG_SOURCES += $(PWD)/../src/parameters.svh
 VERILOG_SOURCES += $(PWD)/../src/conv_control.sv
 VERILOG_SOURCES += $(PWD)/../src/conv_core.sv
+VERILOG_SOURCES += $(PWD)/../src/conv_layer.sv
 
 #TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
-TOPLEVEL = conv_control
+TOPLEVEL = conv_layer
 
 # MODULE is the basename of the Python test file
 # MODULE = gray_sobel_TB

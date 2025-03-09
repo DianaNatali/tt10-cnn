@@ -1,0 +1,26 @@
+# Cargar las librerías necesarias
+read_liberty -lib /foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# Cargar los archivos Verilog y SystemVerilog
+read_verilog ./src/conv_core.v
+read_verilog ./src/conv_control.v
+
+hierarchy -top conv_control
+
+# the high-level stuff
+proc; opt; fsm; opt; memory; opt
+
+# mapping to internal cell library
+techmap; opt
+
+# mapping flip-flops to sky130_fd_sc_hd__tt_025C_1v80.lib
+dfflibmap -liberty /foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# mapping logic to sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /foss/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+clean
+
+# write netlist file
+write_verilog result_yosys.v
+write_blif result_yosys.blif
